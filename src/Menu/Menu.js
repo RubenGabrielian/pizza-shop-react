@@ -13,13 +13,15 @@ const MenuStyled = styled.div `
 `
 
 
-export const Menu = () => <MenuStyled>
+export const Menu = ({setOpenFood}) => <MenuStyled>
    {Object.entries(foods).map(([sectionName, foods]) => (
    <>
      <h4>{sectionName}</h4>
         <FoodGrid>
         {foods.map((food, index) => (
-            <Food  img={food.img} key={index}>
+            <Food  img={food.img} key={index} onClick={() => {
+                setOpenFood(food)
+            }} >
                 <FoodLabel>
                     {food.name}
                 </FoodLabel>

@@ -1,23 +1,23 @@
-import React from 'react';
-import { createGlobalStyle } from 'styled-components'
+import React, {useState} from 'react';
 import { Navbar } from './Navbar/Navbar'
 import { Banner } from './Banner/Banner'
 import { Menu } from './Menu/Menu'
+import { GlobalStyle } from './Styles/GlobalStyles'
+import { FoodDialog } from './FoodDialog/FoodDialog'
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0
-  }
-`
 
-function App() {
+const App = () => {
+
+const [openFood, setOpenFood] = useState()
+
+
   return (
     <>
     <GlobalStyle />
+    <FoodDialog openFood={openFood} setOpenFood={setOpenFood} />
     <Navbar />
     <Banner />
-    <Menu />
-    <div>App</div>
+    <Menu  setOpenFood={setOpenFood} />
     </>
   );
 }
